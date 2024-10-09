@@ -9,6 +9,7 @@ export type GameType = {
   name: string;
   background_image: string;
   parent_platforms: { platform: Platform }[];
+  metacritic: number;
 };
 
 export type GamesResponse = {
@@ -21,5 +22,9 @@ export type GameProps = {
 };
 
 export type PlatformListProps = {
-  platforms: Platform[]
-}
+  platforms: Platform[];
+};
+
+export type CriticScoreProps = {
+  score: number;
+};
