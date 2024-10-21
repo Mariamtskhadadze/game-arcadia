@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export type Platform = {
   id: number;
   name: string;
@@ -28,3 +30,17 @@ export type PlatformListProps = {
 export type CriticScoreProps = {
   score: number;
 };
+
+export type GameCardContainerProps = {
+  children: ReactNode;
+};
+
+export type GenresProps = {
+  id: number;
+  name: string;
+};
+
+export type DataResponse<T> = {
+  count: number;
+  results: T[]
+}
