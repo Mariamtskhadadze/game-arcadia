@@ -12,6 +12,7 @@ export type GameType = {
   background_image: string;
   parent_platforms: { platform: Platform }[];
   metacritic: number;
+  genres: string[];
 };
 
 export type GamesResponse = {
@@ -19,8 +20,8 @@ export type GamesResponse = {
   results: GameType[];
 };
 
-export type GameProps = {
-  game: GameType;
+export type GameGridProps = {
+  selectedGenre: GenresProps | null;
 };
 
 export type PlatformListProps = {
@@ -38,9 +39,15 @@ export type GameCardContainerProps = {
 export type GenresProps = {
   id: number;
   name: string;
+  image_background: string;
+  
+};
+
+export type GenreListProps = {
+  onSelectGenre: (genre: GenresProps) => void;
 };
 
 export type DataResponse<T> = {
   count: number;
-  results: T[]
-}
+  results: T[];
+};

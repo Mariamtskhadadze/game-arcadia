@@ -22,7 +22,7 @@ const useData = <T>(endpoint: string) => {
         setLoading(false);
       });
     return () => controller.abort();
-  });
+  }, [endpoint]);
   return { data, error, loading };
 };
 
