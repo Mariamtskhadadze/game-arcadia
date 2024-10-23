@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { SimpleGrid, Text } from "@chakra-ui/react";
-import useData from "../../hooks/useData";
+import useGames from "../../hooks/useGames";
 import { GameType, GameGridProps } from "../../types";
 import GameCard from "../GameCard/GameCard";
 import GameCardSkeleton from "../GameCardSkeleton/GameCardSkeleton";
@@ -8,7 +8,7 @@ import GameCardContainer from "../GameCardContainer/GameCardContainer";
 import { range } from "../../utils/range";
 
 const GameGrid = ({ selectedGenre }: GameGridProps) => {
-  const { data, error, loading } = useData<GameType>("/games");
+  const { data, error, loading } = useGames(selectedGenre);
   const [displayedGames, setDisplayedGames] = useState<GameType[]>([]);
   const Skeletons = range(1, 10);
 
