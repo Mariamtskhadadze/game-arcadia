@@ -10,19 +10,17 @@ import { range } from "../../utils/range";
 const GameGrid = ({ selectedGenre }: GameGridProps) => {
   const { data, error, loading } = useData<GameType>("/games");
   const [displayedGames, setDisplayedGames] = useState<GameType[]>([]);
-  console.log(selectedGenre);
-
   const Skeletons = range(1, 10);
 
   useEffect(() => {
     if (selectedGenre) {
       setDisplayedGames(
         data.filter((game) =>
-          game.genres.filter((genre) => genre.name === selectedGenre.name)
+          game.genres.some((genre) => genre.name === selectedGenre.name)
         )
       );
+      console.log(selectedGenre);
     } else {
-      console.log(data[0]);
       setDisplayedGames(data);
     }
   }, [data, selectedGenre]);

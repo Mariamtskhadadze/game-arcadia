@@ -1,21 +1,15 @@
+import { Button, HStack, Image, List, ListItem } from "@chakra-ui/react";
 import { GenreListProps, GenresProps } from "../../types";
 import useData from "../../hooks/useData";
-import {
-  Button,
-  HStack,
-  Image,
-  List,
-  ListItem,
-  Spinner,
-} from "@chakra-ui/react";
 import { getCroppedImageUrl } from "../../services/image-url";
+import GenreListSkeleton from "../GenreListSkeleton/GenreListSkeleton";
 
 const GenresList = ({ onSelectGenre }: GenreListProps) => {
   const { data, loading, error } = useData<GenresProps>("/genres");
 
   if (error) return null;
   //? Add skeleton
-  if (loading) return <Spinner />;
+  if (loading) return <GenreListSkeleton />;
   return (
     <List>
       {data.map((genre) => (
