@@ -40,6 +40,7 @@ export type GameCardContainerProps = {
   children: ReactNode;
 };
 
+
 export type GenresProps = {
   id: number;
   name: string;
@@ -49,6 +50,12 @@ export type GenresProps = {
 export type GenreListProps = {
   onSelectGenre: (genre: GenresProps) => void;
   selectedGenre: GenresProps | null;
+};
+
+export type GenreListItemProps = {
+  genre: GenresProps;
+  selectedGenre: GenresProps | null;
+  onSelectGenre: (genre: GenresProps) => void;
 };
 
 export type DataResponse<T> = {
