@@ -7,8 +7,8 @@ import GameCardSkeleton from "../GameCardSkeleton/GameCardSkeleton";
 import GameCardContainer from "../GameCardContainer/GameCardContainer";
 import { range } from "../../utils/range";
 
-const GameGrid = ({ selectedGenre }: GameGridProps) => {
-  const { data, error, loading } = useGames(selectedGenre);
+const GameGrid = ({ selectedGenre, selectedPlatform }: GameGridProps) => {
+  const { data, error, loading } = useGames(selectedGenre, selectedPlatform);
   const [displayedGames, setDisplayedGames] = useState<GameType[]>([]);
   const Skeletons = range(1, 10);
 

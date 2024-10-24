@@ -26,6 +26,7 @@ export type GameProps = {
 
 export type GameGridProps = {
   selectedGenre: GenresProps | null;
+  selectedPlatform: Platform | null;
 };
 
 export type PlatformListProps = {
@@ -39,7 +40,6 @@ export type CriticScoreProps = {
 export type GameCardContainerProps = {
   children: ReactNode;
 };
-
 
 export type GenresProps = {
   id: number;
@@ -61,4 +61,8 @@ export type GenreListItemProps = {
 export type DataResponse<T> = {
   count: number;
   results: T[];
+};
+
+export type PlatformSelectorProps = {
+  onSelectPlatform: (platform: Platform) => void;
 };
