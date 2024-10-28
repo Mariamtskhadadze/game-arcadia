@@ -1,29 +1,28 @@
-import { useEffect, useState } from "react";
 import { SimpleGrid, Text } from "@chakra-ui/react";
 import useGames from "../../hooks/useGames";
-import { GameType, GameGridProps } from "../../types";
+import { GameGridProps } from "../../types";
 import GameCard from "../GameCard/GameCard";
 import GameCardSkeleton from "../GameCardSkeleton/GameCardSkeleton";
 import GameCardContainer from "../GameCardContainer/GameCardContainer";
 import { range } from "../../utils/range";
 
-const GameGrid = ({ selectedGenre, selectedPlatform }: GameGridProps) => {
-  const { data, error, loading } = useGames(selectedGenre, selectedPlatform);
-  const [displayedGames, setDisplayedGames] = useState<GameType[]>([]);
+const GameGrid = ({ gameQuery }: GameGridProps) => {
+  const { data, error, loading } = useGames(gameQuery);
   const Skeletons = range(1, 10);
+  // const [displayedGames, setDisplayedGames] = useState<GameType[]>([]);
 
-  useEffect(() => {
-    if (selectedGenre) {
-      setDisplayedGames(
-        data.filter((game) =>
-          game.genres.some((genre) => genre.name === selectedGenre.name)
-        )
-      );
-      console.log(selectedGenre);
-    } else {
-      setDisplayedGames(data);
-    }
-  }, [data, selectedGenre]);
+  // useEffect(() => {
+  //   if (selectedGenre) {
+  //     setDisplayedGames(
+  //       data.filter((game) =>
+  //         game.genres.some((genre) => genre.name === selectedGenre.name)
+  //       )
+  //     );
+  //     console.log(selectedGenre);
+  //   } else {
+  //     setDisplayedGames(data);
+  //   }
+  // }, [data, selectedGenre]);
   return (
     <>
       {loading && <p>Loading...</p>}
@@ -39,7 +38,7 @@ const GameGrid = ({ selectedGenre, selectedPlatform }: GameGridProps) => {
               <GameCardSkeleton />
             </GameCardContainer>
           ))}
-        {displayedGames.map((game) => (
+        {data.map((game) => (
           <GameCardContainer key={game.id}>
             <GameCard game={game} />
           </GameCardContainer>
