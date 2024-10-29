@@ -13,6 +13,8 @@ export type GameType = {
   parent_platforms: { platform: Platform }[];
   metacritic: number;
   genres: string[];
+  rating_top: number;
+  rating: number;
 };
 
 export type GamesResponse = {
@@ -85,4 +87,8 @@ export type SearchInputProps = {
 
 export type GameHeadingProps = {
   gameQuery: GameQuery;
+};
+
+export type EmojiProps = {
+  rating: number;
 };

@@ -19,7 +19,7 @@ function App() {
         }}
         templateColumns={{
           base: "1fr",
-          lg: "200px 1fr",
+          lg: "max-content 1fr",
         }}
       >
         <GridItem area="nav">
@@ -38,9 +38,9 @@ function App() {
           </GridItem>
         </Show>
         <GridItem area="main">
-          <Box>
+          <Box paddingX={8}>
             <GameHeading gameQuery={gameQuery} />
-            <HStack paddingX={3} paddingLeft={2} marginBottom={5}>
+            <HStack marginBottom={5}>
               <PlatformSelector
                 selectedPlatform={gameQuery.platform}
                 onSelectPlatform={(platform) =>
@@ -54,8 +54,8 @@ function App() {
                 }
               />
             </HStack>
-            <GameGrid gameQuery={gameQuery} />
           </Box>
+          <GameGrid gameQuery={gameQuery} />
         </GridItem>
       </Grid>
     </>

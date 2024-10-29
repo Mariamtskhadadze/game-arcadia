@@ -1,4 +1,4 @@
-import { List } from "@chakra-ui/react";
+import { Heading, List } from "@chakra-ui/react";
 import { GenreListProps, GenresProps } from "../../types";
 import useData from "../../hooks/useData";
 import GenreListSkeleton from "../GenreListSkeleton/GenreListSkeleton";
@@ -10,16 +10,21 @@ const GenresList = ({ selectedGenre, onSelectGenre }: GenreListProps) => {
   if (error) return null;
   if (loading) return <GenreListSkeleton />;
   return (
-    <List>
-      {data.map((genre) => (
-        <GenreListItem
-          selectedGenre={selectedGenre}
-          genre={genre}
-          onSelectGenre={onSelectGenre}
-          key={genre.id}
-        />
-      ))}
-    </List>
+    <>
+      <Heading fontSize="2xl" marginBottom={3}>
+        Genres
+      </Heading>
+      <List>
+        {data.map((genre) => (
+          <GenreListItem
+            selectedGenre={selectedGenre}
+            genre={genre}
+            onSelectGenre={onSelectGenre}
+            key={genre.id}
+          />
+        ))}
+      </List>
+    </>
   );
 };
 
