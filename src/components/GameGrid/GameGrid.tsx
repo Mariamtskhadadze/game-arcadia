@@ -9,6 +9,8 @@ import { range } from "../../utils/range";
 const GameGrid = ({ gameQuery }: GameGridProps) => {
   const { data, error, loading } = useGames(gameQuery);
   const Skeletons = range(1, 10);
+
+
   // const [displayedGames, setDisplayedGames] = useState<GameType[]>([]);
 
   // useEffect(() => {
